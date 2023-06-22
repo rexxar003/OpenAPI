@@ -45,7 +45,60 @@
           "summary": "get all todolist",
           "description": "get all todolist active by default",
           "responses": {
-
+            "200":{
+              "description": "Succes get all todolist",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                      "id":{
+                        "type": "string"
+                      },
+                      "name":{
+                        "type": "string"
+                      },
+                      "priority":{
+                        "type": "number",
+                        "format": "int32"
+                      },
+                      "tags":{
+                        "type": "array",
+                        "items" :{
+                          "type": "string"
+                        }
+                      }
+                      }
+                    }
+                  },
+                  "examples": {
+                    "succes":{
+                      "description": "Example succes get all todolist",
+                      "value":[
+                        {
+                          "id":"1",
+                          "name":"Java",
+                          "priority":3,
+                          "tags":[
+                            "Java","programming"
+                          ]
+                        },
+                         {
+                          "id":"2",
+                          "name":"PHP",
+                          "priority":5,
+                          "tags":[
+                            "PHP","web programming"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           },
           "parameters": [
             {
@@ -87,6 +140,59 @@
           "summary": "Create new todolist",
           "description": "Create new todolist databases",
           "responses": {
+            "200":{
+              "description": "Succes create todolist",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "properties": {
+                      "id":{
+                        "type": "string"
+                      },
+                      "name":{
+                        "type": "string"
+                      },
+                      "priority":{
+                        "type": "number",
+                        "format": "int32"
+                      },
+                      "tags":{
+                        "type": "array",
+                        "items":{
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "examples": {
+                    "java":{
+                      "description": "Succes create java todolist",
+                      "value":{
+                        "id":"1",
+                        "name":"Java",
+                        "priority":3,
+                        "tags":[
+                          "Java","Programming"
+                        ]
+                      }
+                    },
+                    "PHP":{
+                      "description": "Succes create PHP todolist",
+                      "value":{
+                          "id":"2",
+                          "name":"PHP",
+                          "priority":5,
+                          "tags":[
+                            "PHP","web programming"
+                          ]
+                      }
+                    }
+
+                  }
+                }
+              }
+            }
 
           },
           "requestBody":{
@@ -152,7 +258,59 @@
           "summary": "update existing todolist",
           "description": "Update existing todolist indatabases",
           "responses": {
+"200":{
+              "description": "Succes create todolist",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "properties": {
+                      "id":{
+                        "type": "string"
+                      },
+                      "name":{
+                        "type": "string"
+                      },
+                      "priority":{
+                        "type": "number",
+                        "format": "int32"
+                      },
+                      "tags":{
+                        "type": "array",
+                        "items":{
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "examples": {
+                    "java":{
+                      "description": "Succes create java todolist",
+                      "value":{
+                        "id":"1",
+                        "name":"Java",
+                        "priority":3,
+                        "tags":[
+                          "Java","Programming"
+                        ]
+                      }
+                    },
+                    "PHP":{
+                      "description": "Succes update PHP todolist",
+                      "value":{
+                          "id":"2",
+                          "name":"PHP",
+                          "priority":5,
+                          "tags":[
+                            "PHP","web programming"
+                          ]
+                      }
+                    }
 
+                  }
+                }
+              }
+            }
           },
           "parameters": [
             {
@@ -237,6 +395,51 @@
           "summary": "Delete existing todolist",
           "description": "Delete existing todolist in databases",
           "responses": { 
+            "200":{
+              "description": "Succes delete todolist",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "properties": {
+                      "succes":{
+                        "type": "boolean"
+                      }
+                    }
+                  },
+                  "examples": {
+                    "succes":{
+                      "description": "succes delete todolist",
+                      "value":{
+                        "succes":true
+                      }
+                    }
+                  }
+                }
+              }
+            }, "300":{
+              "description": "failed delete not found todolist",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "properties": {
+                      "succes":{
+                        "type": "boolean"
+                      }
+                    }
+                  },
+                  "examples": {
+                    "succes":{
+                      "description": "failed delete todolist",
+                      "value":{
+                        "succes":false
+                      }
+                    }
+                  }
+                }
+              }
+            }
 
           },
           "parameters": [
