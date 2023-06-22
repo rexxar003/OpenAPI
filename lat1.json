@@ -78,6 +78,14 @@
           "description": "Create new todolist databases",
           "responses": {
 
+          },
+          "requestBody":{
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{}
+              }
+            }
           }
         }
       },
