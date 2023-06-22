@@ -1,0 +1,93 @@
+{
+    "openapi":"3.0.2",
+    "info": {
+      "title":"API Title",
+      "version":"2.0",
+      "description":"OpenAPI for Todolist RESTful API",
+      "termsOfService": "https://www.programmerzamannow.com",
+      "contact": {
+        "name": "Kanza Az Zahrawani",
+        "email": "kanza.az.zahrawani28@gmail.com",
+        "url": "https:www.programmer.zaman.now"
+    },
+
+    "license":{
+        "name": "APACHE 2.0",
+        "url":"https://www.apache.org/licenses/LICENSE-2.0"
+    }
+
+    },
+    "servers": [
+      {
+        "description": "Todolist RESTful API Server",
+        "url": "https://{environment}.programmerzamannow.com",
+        "variables": {
+          "environment":{
+            "default": "dev",
+            "environment":"Server Environment",
+            "enum": [
+              "dev",
+              "qa",
+              "prod"
+            ]
+          }
+        }
+      }
+    ],
+"externalDocs": {
+  "description": "Youtube Programmer Zaman Now",
+  "url": "https://www.Youtube.com/ProgrammerZamanNow"
+},
+
+    "paths": {
+      "/todolist":{
+        "get":{
+          "summary": "get all todolist",
+          "description": "get all todolist active by default",
+          "responses": {
+
+          },
+          "parameters": [
+            {
+              "name": "include done",
+              "in": "query",
+              "required": false,
+              "description": " is include done todolist"
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "description": "Filter todolist by name"
+            }
+          ]
+
+        },
+        "post":{
+          "summary": "Create new todolist",
+          "description": "Create new todolist databases",
+          "responses": {
+
+          }
+        }
+      },
+      "/todolist/{todolistId}":{
+        "put":{
+          "summary": "update existing todolist",
+          "description": "Update existing todolist indatabases",
+          "responses": {
+
+          }
+
+        },
+        "delete":{
+          "summary": "Delete existing todolist",
+          "description": "Delete existing todolist in databases",
+          "responses": { 
+
+          }
+
+        }
+      }
+    }
+  }
