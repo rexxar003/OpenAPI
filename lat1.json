@@ -52,13 +52,23 @@
               "name": "include done",
               "in": "query",
               "required": false,
-              "description": " is include done todolist"
+              "description": " is include done todolist",
+              "schema":{
+                "type": "boolean",
+                "nullable": true
+              }
             },
             {
               "name": "name",
               "in": "query",
               "required": false,
-              "description": "Filter todolist by name"
+              "description": "Filter todolist by name",
+              "schema":{
+                "type": "string",
+                "nullable": true,
+                "minLength": 1,
+                "maxLength": 100
+              }
             }
           ]
 
@@ -77,7 +87,18 @@
           "description": "Update existing todolist indatabases",
           "responses": {
 
-          }
+          },
+          "parameters": [
+            {
+              "name": "todolistId",
+              "in": "path",
+              "required": true,
+              "description": "Todolist for updated",
+              "schema":{
+                "type": "string"
+              }
+            }
+          ]
 
         },
         "delete":{
@@ -85,7 +106,18 @@
           "description": "Delete existing todolist in databases",
           "responses": { 
 
-          }
+          },
+          "parameters": [
+            {
+              "name": "todolistId",
+              "in": "path",
+              "required": true,
+              "description": "todolist id for deleted",
+              "schema":{
+                "type": "string"
+              }
+            }
+          ]
 
         }
       }
