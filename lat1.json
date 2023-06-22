@@ -83,7 +83,31 @@
             "required": true,
             "content": {
               "application/json":{
-                "schema":{}
+                "schema":{
+                  "type": "object",
+                  "properties": {
+                    "name":{
+                      "type": "string",
+                      "minLength": 1,
+                      "required": true
+                    },
+                    "priority":{
+                      "type": "integer",
+                      "format": "int32",
+                      "required": true,
+                      "default":1
+                    },
+                    "tags":{
+                      "type": "array",
+                      "required": false,
+                      "minItems": 1,
+                      "items":{
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -106,7 +130,39 @@
                 "type": "string"
               }
             }
-          ]
+          ],
+          "requestBody":{
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "properties": {
+                    "name":{
+                      "type": "string",
+                      "minLength": 1,
+                      "required": true
+                    },
+                    "priority":{
+                      "type": "integer",
+                      "format": "int32",
+                      "default":1,
+                      "required": true
+                    },
+                    "tags":{
+                      "type": "array",
+                      "required": false,
+                      "minItems": 1,
+                      "items":{
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
 
         },
         "delete":{
