@@ -51,28 +51,7 @@
               "content": {
                 "application/json":{
                   "schema":{
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                      "id":{
-                        "type": "string"
-                      },
-                      "name":{
-                        "type": "string"
-                      },
-                      "priority":{
-                        "type": "number",
-                        "format": "int32"
-                      },
-                      "tags":{
-                        "type": "array",
-                        "items" :{
-                          "type": "string"
-                        }
-                      }
-                      }
-                    }
+                    "$ref": "#/components/schemas/arrayTodolist"
                   },
                   "examples": {
                     "succes":{
@@ -147,25 +126,7 @@
               "content": {
                 "application/json":{
                   "schema":{
-                    "type": "object",
-                    "properties": {
-                      "id":{
-                        "type": "string"
-                      },
-                      "name":{
-                        "type": "string"
-                      },
-                      "priority":{
-                        "type": "number",
-                        "format": "int32"
-                      },
-                      "tags":{
-                        "type": "array",
-                        "items":{
-                          "type": "string"
-                        }
-                      }
-                    }
+                    "$ref": "#/components/schemas/todolist"
                   },
                   "examples": {
                     "java":{
@@ -202,29 +163,7 @@
             "content": {
               "application/json":{
                 "schema":{
-                  "type": "object",
-                  "properties": {
-                    "name":{
-                      "type": "string",
-                      "minLength": 1,
-                      "required": true
-                    },
-                    "priority":{
-                      "type": "integer",
-                      "format": "int32",
-                      "required": true,
-                      "default":1
-                    },
-                    "tags":{
-                      "type": "array",
-                      "required": false,
-                      "minItems": 1,
-                      "items":{
-                        "type": "string",
-                        "minLength": 1
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/createOrUpdateTodolist"
                 },
                 "examples": {
                   "java":{
@@ -261,29 +200,11 @@
           "description": "Update existing todolist indatabases",
           "responses": {
 "200":{
-              "description": "Succes create todolist",
+              "description": "Succes update todolist",
               "content": {
                 "application/json":{
                   "schema":{
-                    "type": "object",
-                    "properties": {
-                      "id":{
-                        "type": "string"
-                      },
-                      "name":{
-                        "type": "string"
-                      },
-                      "priority":{
-                        "type": "number",
-                        "format": "int32"
-                      },
-                      "tags":{
-                        "type": "array",
-                        "items":{
-                          "type": "string"
-                        }
-                      }
-                    }
+                   "$ref": "#/components/schemas/todolist"
                   },
                   "examples": {
                     "java":{
@@ -316,23 +237,7 @@
           },
           "parameters": [
             {
-              "name": "todolistId",
-              "in": "path",
-              "required": true,
-              "description": "Todolist for updated",
-              "schema":{
-                "type": "string"
-              },
-              "examples": {
-                "java":{
-                  "description": "sample todolist id for Java",
-                  "value":"1"
-                      },
-                "php":{
-                  "description": "example todolist id for php",
-                  "value": 2
-                }
-              }
+             "$ref": "#/components/parameters/TodolistId"
             }
           ],
           "requestBody":{
@@ -340,29 +245,7 @@
             "content": {
               "application/json":{
                 "schema":{
-                  "type": "object",
-                  "properties": {
-                    "name":{
-                      "type": "string",
-                      "minLength": 1,
-                      "required": true
-                    },
-                    "priority":{
-                      "type": "integer",
-                      "format": "int32",
-                      "default":1,
-                      "required": true
-                    },
-                    "tags":{
-                      "type": "array",
-                      "required": false,
-                      "minItems": 1,
-                      "items":{
-                        "type": "string",
-                        "minLength": 1
-                      }
-                    }
-                  }
+                 "$ref": "#/components/schemas/createOrUpdateTodolist"
                 },
                 "examples": {
                   "java":{
@@ -446,17 +329,99 @@
           },
           "parameters": [
             {
-              "name": "todolistId",
-              "in": "path",
-              "required": true,
-              "description": "todolist id for deleted",
-              "schema":{
-                "type": "string"
-              }
+              "$ref": "#/components/parameters/TodolistId"
             }
           ]
 
         }
+      }
+    },
+    "components": {
+      "schemas": {
+        
+        "todolist":{
+
+                "type": "object",
+                  "properties": {
+                    "id":{
+                      "type": "string"
+                    },
+                    "name":{
+                      "type": "string",
+                      "minLength": 1,
+                      "required": true
+                    },
+                    "priority":{
+                      "type": "integer",
+                      "format": "int32",
+                      "default":1,
+                      "required": true
+                    },
+                    "tags":{
+                      "type": "array",
+                      "required": false,
+                      "minItems": 1,
+                      "items":{
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+
+        }
+      },
+      "createOrUpdateTodolist":{
+        "type": "object",
+                  "properties": {
+                    "name":{
+                      "type": "string",
+                      "minLength": 1,
+                      "required": true
+                    },
+                    "priority":{
+                      "type": "integer",
+                      "format": "int32",
+                      "default":1,
+                      "required": true
+                    },
+                    "tags":{
+                      "type": "array",
+                      "required": false,
+                      "minItems": 1,
+                      "items":{
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+      },
+      "arrayTodolist":{
+        "type": "array",
+        "items":{
+            "$ref": "#/components/schemas/todolist"
+        }
+      }
+        
+      },
+      "parameters": {
+        "TodolistId":{
+              "name": "todolistId",
+              "in": "path",
+              "required": true,
+              "description": "Todolist for updated",
+              "schema":{
+                "type": "string"
+              },
+              "examples": {
+                "java":{
+                  "description": "sample todolist id for Java",
+                  "value":"1"
+                      },
+                "php":{
+                  "description": "example todolist id for php",
+                  "value": 2
+                }
+              }
+            }
       }
     }
   }
